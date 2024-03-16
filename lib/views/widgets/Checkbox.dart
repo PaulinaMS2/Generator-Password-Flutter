@@ -1,69 +1,52 @@
 import 'package:flutter/material.dart';
 
-class CheckboxWidget extends StatefulWidget {
-  CheckboxWidget({Key? key}) : super(key: key);
 
-  @override
-  State<CheckboxWidget> createState() => _CheckboxWidgetState();
-}
+class CheckboxWidget extends StatelessWidget {
+  final bool uppercase;
+  final bool lowercase;
+  final bool numbers;
+  final bool symbols;
+  final Function(bool?, String) onChanged;
 
-class _CheckboxWidgetState extends State<CheckboxWidget> {
-  Map<String, dynamic> values = {
-    'Mayúsculas': false,
-    'Minúsculas': false,
-    'Números': false,
-    'Símbolos': false,
-  };
+  const CheckboxWidget({super.key, 
+    required this.uppercase,
+    required this.lowercase,
+    required this.numbers,
+    required this.symbols,
+    required this.onChanged,
+  });
+
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children:<Widget>[
         CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading, // Alinea la caja de verificación a la izquierda
           title: const Text("Mayúsculas"),
-          value: values["Mayúsculas"],
+          value: uppercase,
           activeColor: Colors.red.shade800,
-          onChanged: (newValue) {
-            setState(() {
-              values["Mayúsculas"] = newValue;
-            });
-          },
+          onChanged: (value) => onChanged(value, 'uppercase'),
         ),
         CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading, // Alinea la caja de verificación a la izquierda
           title: const Text("Minúsculas"),
-          value: values["Minúsculas"],
+          value: lowercase,
           activeColor: Colors.red.shade800,
-          onChanged: (newValue) {
-            setState(() {
-              values["Minúsculas"] = newValue;
-            });
-          },
+          onChanged: (value) => onChanged(value, 'lowercase'),
         ),
         CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading, // Alinea la caja de verificación a la izquierda
           title: const Text("Números"),
-          value: values["Números"],
+          value: numbers,
           activeColor: Colors.red.shade800,
-          onChanged: (newValue) {
-            setState(() {
-              values["Números"] = newValue;
-            });
-          },
+          onChanged: (value) => onChanged(value, 'numbers'),
         ),
         CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading, // Alinea la caja de verificación a la izquierda
           title: const Text("Símbolos"),
-          value: values["Símbolos"],
+          value: symbols,
           activeColor: Colors.red.shade800,
-          onChanged: (newValue) {
-            setState(() {
-              values["Símbolos"] = newValue;
-            });
-          },
+          onChanged: (value) => onChanged(value, 'symbols'),
         ),
-      ],
+
+
+      ]
     );
-  }
-}
+  }}

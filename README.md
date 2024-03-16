@@ -1,3 +1,3 @@
-# generador_password
+# generator_password
 
 A new Flutter project.

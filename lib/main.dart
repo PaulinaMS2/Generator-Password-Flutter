@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:generador_password/views/widgets/textPassword.dart';
-import 'package:generador_password/views/widgets/Checkbox.dart';
+import 'package:generador_password/views/generator_password.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: CheckboxWidget(),
+        body: GeneratorPassword()
               
               
       ),
